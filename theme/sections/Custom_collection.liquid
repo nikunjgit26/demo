@@ -1,0 +1,374 @@
+<div class="main">
+{% if section.blocks.size > 0 %}
+	{% for block in section.blocks %}
+		{% case block.type %}
+  			{%- when 'image-one-half' -%}
+  			<div class="one-half">
+              	<div class="block_secion">
+                  <div class="inner">
+                    <img class="custom_img" src="{{ block.settings.product_image| img_url: 'master' }}" alt="" />
+                    <div class="">
+                      {% comment %}
+                      <meta data-note="" data-handle="{{- block.settings.featured_product_three.handle -}}" data-title="{{- section.settings.featured_product_three.title -}}" data-x="{{block.settings.X-AXIS}}" data-y="{{block.settings.X-AXIS}}">
+                      <div>
+
+                      </div>
+                      {% endcomment %}
+                    </div>
+
+                    {% unless block.settings.featured_product == empty %}
+                  
+                    <a href="{{ block.settings.featured_product.url }}" class="">
+                      <span class="note one" handle="{{ block.settings.featured_product.handle }}" style="margin-left: {{block.settings.X-AXIS}}%;margin-top: {{block.settings.Y-AXIS}}%;">
+                        <b></b>
+                        <i>
+                         {% comment %} {%- assign product = all_products[block.settings.featured_product] -%}	
+                           {{ all_products[block.settings.featured_product].title}}{% endcomment %}
+                          {{ block.settings.featured_product.title }}
+                        </i>
+                      </span>
+                    </a>
+
+                    {% endunless %}
+
+                    {% unless block.settings.featured_product_two == empty %}
+
+
+                      <span class="note two quick-view" data-handle="{{- block.settings.featured_product_two.handle -}}" style="margin-left: {{block.settings.X-AXIS-two}}%;margin-top: {{block.settings.Y-AXIS-two}}%;">
+                          <b></b>
+                          <i>
+                             {{ block.settings.featured_product_two.title }}
+                          </i>
+                      </span>
+
+                    {% endunless %}
+
+                    
+                    {% unless block.settings.featured_product_three == empty %}
+
+                    <a href="javascript:void(0)" data-handle="{{ block.settings.featured_product_three.handle }}" class="quick-view">
+                      <span class="note three" handle="{{ all_products[block.settings.featured_product_three].handle}}" style="margin-left: {{block.settings.X-AXIS-three}}%;margin-top: {{block.settings.Y-AXIS-three}}%;">
+                          <b></b>
+                          <i>
+                            {{ block.settings.featured_product_three.title }}
+                             {% comment %}{%- assign product = all_products[block.settings.featured_product_three] -%}
+                            {{ all_products[section.settings.featured_product_three].title}}
+                            {% endcomment %}
+                          </i>
+                        </span>
+                      </a>
+                    {% endunless %}
+                  </div>
+                </div>
+  			</div>
+  			{%- when 'image-full' -%}
+  			<div class="one-whole">
+              	<div class="block_secion">
+                  <div class="inner">
+                    <img class="custom_img" src="{{ block.settings.product_image| img_url: 'master' }}" alt="" />
+                    <div class="">
+                      {% comment %}
+                      <meta data-note="" data-handle="{{- block.settings.featured_product_three.handle -}}" data-title="{{- block.settings.featured_product_three.title -}}" data-x="{{block.settings.X-AXIS}}" data-y="{{section.settings.X-AXIS}}">
+                      <div>
+
+                      </div>
+                      {% endcomment %}
+                    </div>
+
+                    {% unless block.settings.featured_product == empty %}
+                  
+                    <a href="{{ all_products[block.settings.featured_product].url}}" class="">
+                      <span class="note " handle="{{ block.settings.featured_product.handle }}" style="margin-left: {{block.settings.X-AXIS}}%;margin-top: {{block.settings.Y-AXIS}}%;">
+                        <b></b>
+                        <i>
+                          {% comment %}{%- assign product = all_products[block.settings.featured_product] -%}	
+                          {{ all_products[section.settings.featured_product].title}}{% endcomment %}
+                          {{ block.settings.featured_product.title }}
+                        </i>
+                      </span>
+                    </a>
+
+                    {% endunless %}
+
+                    {% unless block.settings.featured_product_two == empty %}
+
+
+                      <span class="note quick-view" data-handle="{{- block.settings.featured_product_two.handle -}}" style="margin-left: {{block.settings.X-AXIS-two}}%;margin-top: {{block.settings.Y-AXIS-two}}%;">
+                          <b></b>
+                          <i>
+                             {{ block.settings.featured_product_two.title }}
+                          </i>
+                      </span>
+
+                    {% endunless %}
+
+                    
+                    {% unless block.settings.featured_product_three == empty %}
+
+                    <a href="javascript:void(0)" data-handle="{{ block.settings.featured_product_three.handle }}" class="quick-view">
+                      <span class="note" handle="{{ all_products[block.settings.featured_product_three].handle}}" style="margin-left: {{block.settings.X-AXIS-three}}%;margin-top: {{block.settings.Y-AXIS-three}}%;">
+                          <b></b>
+                          <i>
+                            {{ block.settings.featured_product_three.title }}
+                             {% comment %}
+                            {%- assign product = all_products[block.settings.featured_product_three] -%}
+                            {{ all_products[section.settings.featured_product_three].title}}{% endcomment %}
+                          </i>
+                        </span>
+                      </a>
+                    {% endunless %}
+                  </div>
+                </div>
+  			</div>
+  			{%- when 'text-half' -%}
+  				<div class="one-half">
+                  <div class="inner">
+                   {% unless block.settings.title_head == empty %} 
+                    <h2>{{ block.settings.title_head}}</h2>
+                    {% endunless %}
+                    {% unless block.settings.title_head == empty %} 
+                    <div class="content">
+                      <p>{{block.settings.cnt_text}}</p>
+                    </div>
+                    {% endunless %}
+                  </div>
+  				</div>
+  	
+         {% endcase %}
+	{% endfor %}
+{% endif %}
+  
+</div>
+
+<div style="display:none;">
+  {{ section.settings.featured_product }}
+  {{ section.settings.featured_product.title }}
+  {{ section.settings.featured_product.name }}
+  {{- section.settings.featured_product.handle -}}
+  {{ section.settings.featured_product.url }}
+  {{ section.settings.featured_product.url | within: collection }}
+  {{ product.url | within: collection }}
+  {{ section.settings.featured_product_three.title }}
+  {%- assign product = all_products[section.settings.featured_product] -%}
+	<a href="{{ product.url}}">Order this product</a>
+  	<a href="{{ all_products[section.settings.featured_product].url}}">Order this product</a>
+</div>
+{% comment %}
+{% endcomment %}
+{% schema %}
+  {
+    "name": "Product Tag",
+    "class": "model_image",
+    "settings": [
+	{
+        "type": "text",
+        "id": "page_title",
+        "label": "Page title"
+    }
+	],
+	"blocks": [
+      {
+        "type": "image-one-half",
+        "name": "One Half",
+        "settings": [
+          {
+          "type": "image_picker",
+          "id": "product_image",
+          "label": "product Image",
+          "info": "showen image" 
+        },
+        {
+          "type": "product",
+          "id": "featured_product",
+          "label": {
+            "en": "Product"
+          }
+        },
+        {
+          "type": "range",
+          "id": "X-AXIS",
+          "min": -50,
+          "max": 50,
+          "step": 1,
+          "unit": "%",
+          "label": "X-AXIS position",
+          "default": 0
+        },
+        {
+          "type": "range",
+          "id": "Y-AXIS",
+          "min": -50,
+          "max": 50,
+          "step": 1,
+          "unit": "%",
+          "label": "Y-AXIS position",
+          "default": 0
+        },
+        {
+          "type": "product",
+          "id": "featured_product_two",
+          "label": {
+            "en": "Product two"
+          }
+        },
+        {
+          "type": "range",
+          "id": "X-AXIS-two",
+          "min": -50,
+          "max": 50,
+          "step": 1,
+          "unit": "%",
+          "label": "X-AXIS position",
+          "default": 0
+        },
+        {
+          "type": "range",
+          "id": "Y-AXIS-two",
+          "min": -50,
+          "max": 50,
+          "step": 1,
+          "unit": "%",
+          "label": "Y-AXIS position",
+          "default": 0
+        },
+        {
+          "type": "product",
+          "id": "featured_product_three",
+          "label": {
+            "en": "Product three"
+          }
+        },
+        {
+          "type": "range",
+          "id": "X-AXIS-three",
+          "min": -50,
+          "max": 50,
+          "step": 1,
+          "unit": "%",
+          "label": "X-AXIS position",
+          "default": 0
+        },
+        {
+          "type": "range",
+          "id": "Y-AXIS-three",
+          "min": -50,
+          "max": 50,
+          "step": 1,
+          "unit": "%",
+          "label": "Y-AXIS position",
+          "default": 0
+        }
+		]
+	  },
+	  {
+        "type": "image-full",
+        "name": "Full",
+        "settings": [
+          {
+          "type": "image_picker",
+          "id": "product_image",
+          "label": "product Image",
+          "info": "showen image" 
+        },
+        {
+          "type": "product",
+          "id": "featured_product",
+          "label": {
+            "en": "Product"
+          }
+        },
+        {
+          "type": "range",
+          "id": "X-AXIS",
+          "min": -50,
+          "max": 50,
+          "step": 1,
+          "unit": "%",
+          "label": "X-AXIS position",
+          "default": 0
+        },
+        {
+          "type": "range",
+          "id": "Y-AXIS",
+          "min": -50,
+          "max": 50,
+          "step": 1,
+          "unit": "%",
+          "label": "Y-AXIS position",
+          "default": 0
+        },
+        {
+          "type": "product",
+          "id": "featured_product_two",
+          "label": {
+            "en": "Product two"
+          }
+        },
+        {
+          "type": "range",
+          "id": "X-AXIS-two",
+          "min": -50,
+          "max": 50,
+          "step": 1,
+          "unit": "%",
+          "label": "X-AXIS position",
+          "default": 0
+        },
+        {
+          "type": "range",
+          "id": "Y-AXIS-two",
+          "min": -50,
+          "max": 50,
+          "step": 1,
+          "unit": "%",
+          "label": "Y-AXIS position",
+          "default": 0
+        },
+        {
+          "type": "product",
+          "id": "featured_product_three",
+          "label": {
+            "en": "Product three"
+          }
+        },
+        {
+          "type": "range",
+          "id": "X-AXIS-three",
+          "min": -50,
+          "max": 50,
+          "step": 1,
+          "unit": "%",
+          "label": "X-AXIS position",
+          "default": 0
+        },
+        {
+          "type": "range",
+          "id": "Y-AXIS-three",
+          "min": -50,
+          "max": 50,
+          "step": 1,
+          "unit": "%",
+          "label": "Y-AXIS position",
+          "default": 0
+        }
+		]
+	  },
+	  {
+        "type": "text-half",
+        "name": "text",
+        "settings": [
+          {
+              "type": "text",
+              "id": "title_head",
+              "label": "block title"
+          },
+		  {
+              "type": "richtext",
+              "id": "cnt_text",
+              "label": "block content"
+          }
+		]
+	  }
+    ]
+  }
+{% endschema %}
